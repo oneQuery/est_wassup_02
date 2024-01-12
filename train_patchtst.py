@@ -83,8 +83,9 @@ def main(cfg):
     
     ## genearte model
     # device
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    
+    # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device("mps")
+
     # create model
     Model = cfg.get("model")
     model_params = cfg.get("model_params")

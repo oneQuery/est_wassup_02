@@ -1,10 +1,10 @@
-from core.utils import get_root_path
-from models import PatchTST
 import torch
-from torch import optim
 import torch.nn.functional as F
+from torch import optim
 from torch.nn import ReLU
 
+from core.utils import get_root_path
+from models import PatchTST
 
 ROOT_PATH = get_root_path()
 EXPERIMENT_NAME = "patch_test_2_w_scheduler"
@@ -16,21 +16,36 @@ TARGET_COL = "target"
 # train params
 EPOCHS = 40
 LEARNING_RATE = 0.00001 # e-4
-BATCH_SIZE = 32
+# BATCH_SIZE = 32
 LOSS_FUNC = F.mse_loss
 OPTIM = torch.optim.Adam
 METRIC = F.l1_loss
 
 # model params
-MODEL = PatchTST
+# MODEL = PatchTST
 PRED_SIZE = 24
-PATCH_LENGTH = 16 # 논문 수치
-N_PATCHES = 64 # 논문 수치: 64 or 96
+# PATCH_LENGTH = 16 # 논문 수치
+# N_PATCHES = 64 # 논문 수치: 64 or 96
+# # WINDOW_SIZE = int(PATCH_LENGTH*N_PATCHES/2) # 512 약 21일
+# MODEL_DIM = 128 # HIDDEN_DIM 같은 것
+# NUM_HEADS = 8 # 논문 수치로 일단 고정
+# NUM_LAYERS = 3 # 논문 수치로 일단 고정
+# DIM_FEED_FORWARD = 256
+# OUTPUT_FUNC = F.sigmoid # Y scaler 에 따라서 변경되어야 함
+# # y scaler 가 None 인 경우, lambda x: x 이렇게 넣어주면 됨.
+
+# model params
+MODEL = PatchTST
+
+BATCH_SIZE = 512
+
+PATCH_LENGTH = 2 # 논문 수치
+N_PATCHES = 8 # 논문 수치: 64 or 96
 # WINDOW_SIZE = int(PATCH_LENGTH*N_PATCHES/2) # 512 약 21일
-MODEL_DIM = 128 # HIDDEN_DIM 같은 것
-NUM_HEADS = 8 # 논문 수치로 일단 고정
-NUM_LAYERS = 3 # 논문 수치로 일단 고정
-DIM_FEED_FORWARD = 256
+MODEL_DIM = 32 # HIDDEN_DIM 같은 것
+NUM_HEADS = 2 # 논문 수치로 일단 고정
+NUM_LAYERS = 1 # 논문 수치로 일단 고정
+DIM_FEED_FORWARD = 32
 OUTPUT_FUNC = F.sigmoid # Y scaler 에 따라서 변경되어야 함
 # y scaler 가 None 인 경우, lambda x: x 이렇게 넣어주면 됨.
 
@@ -44,7 +59,7 @@ SCHEDULER_PARAMS = {
 # early stop
 USE_EARLY_STOP = True
 EARLY_STOP_PARAMS = {
-    "patience_limit": 20 # 몇 번의 epoch까지 지켜볼지를 결정
+    "patience_limit": 10 # 몇 번의 epoch까지 지켜볼지를 결정
 }
 
 config = {

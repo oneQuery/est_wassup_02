@@ -29,26 +29,26 @@ USE_ARIMA = False
 
 DROP_COLS_AFTER_MERGE = [
   "county", "is_business", "is_consumption", "product_type", # "data_block_id", 
-  "row_id", "date", "date_client", # "forecast_date_electricity",
+  "row_id", "date", "date_client", "forecast_date_electricity",
   "origin_date_electricity", "forecast_date_gas", "origin_date_gas", "prediction_unit_id",
-  "year", "quarter", "month", "week",  "day", "hour",
-  "day_of_year", "day_of_month", "day_of_week", "eic_count_client",
-  "installed_capacity_client", "temperature_h_mean", 
-  "dewpoint_h_mean",
-  "rain_h_mean", "snowfall_h_mean", "surface_pressure_h_mean",
-  "cloudcover_total_h_mean", "cloudcover_low_h_mean",
-  "cloudcover_mid_h_mean", "cloudcover_high_h_mean",
-  "windspeed_10m_h_mean", "winddirection_10m_h_mean",
-  "shortwave_radiation_h_mean", "direct_solar_radiation_h_mean",
-  "diffuse_radiation_h_mean", "hour_h", "hours_ahead_f_mean",
-  "temperature_f_mean", "dewpoint_f_mean", "cloudcover_high_f_mean",
-  "cloudcover_low_f_mean", "cloudcover_mid_f_mean",
-  "cloudcover_total_f_mean", "10_metre_u_wind_component_f_mean",
-  "10_metre_v_wind_component_f_mean", "direct_solar_radiation_f_mean",
-  "surface_solar_radiation_downwards_f_mean", "snowfall_f_mean",
-  "total_precipitation_f_mean", "euros_per_mwh_electricity",
-  "lowest_price_per_mwh_gas", "highest_price_per_mwh_gas",
-  "mean_price_per_mwh_gas"
+  # "year", "quarter", "month", "week",  "day", "hour",
+  # "day_of_year", "day_of_month", "day_of_week", "eic_count_client",
+  # "installed_capacity_client", "temperature_h_mean", 
+  # "dewpoint_h_mean",
+  # "rain_h_mean", "snowfall_h_mean", "surface_pressure_h_mean",
+  # "cloudcover_total_h_mean", "cloudcover_low_h_mean",
+  # "cloudcover_mid_h_mean", "cloudcover_high_h_mean",
+  # "windspeed_10m_h_mean", "winddirection_10m_h_mean",
+  # "shortwave_radiation_h_mean", "direct_solar_radiation_h_mean",
+  # "diffuse_radiation_h_mean", "hour_h", "hours_ahead_f_mean",
+  # "temperature_f_mean", "dewpoint_f_mean", "cloudcover_high_f_mean",
+  # "cloudcover_low_f_mean", "cloudcover_mid_f_mean",
+  # "cloudcover_total_f_mean", "10_metre_u_wind_component_f_mean",
+  # "10_metre_v_wind_component_f_mean", "direct_solar_radiation_f_mean",
+  # "surface_solar_radiation_downwards_f_mean", "snowfall_f_mean",
+  # "total_precipitation_f_mean", "euros_per_mwh_electricity",
+  # "lowest_price_per_mwh_gas", "highest_price_per_mwh_gas",
+  # "mean_price_per_mwh_gas", "country_holiday"
 ]
 
 # choose one: ['min', 'mean', 'max', 'custom_mean']
@@ -62,9 +62,10 @@ SCALER = {
   "maxabs": MaxAbsScaler,
   "robust": RobustScaler,
 }
-SELECTED_X_SCALER = SCALER["minmax"]() # 사용을 원치 않을 경우, None 값을 넣어주세요.
-SELECTED_Y_SCALER = SCALER["minmax"]() # 사용을 원치 않을 경우, None 값을 넣어주세요.
-
+SELECTED_X_SCALER = None
+SELECTED_Y_SCALER = None
+# SELECTED_X_SCALER = SCALER["minmax"]() # 사용을 원치 않을 경우, None 값을 넣어주세요.
+# SELECTED_Y_SCALER = SCALER["minmax"]() # 사용을 원치 않을 경우, None 값을 넣어주세요.
 
 config = {
   # origin data path
