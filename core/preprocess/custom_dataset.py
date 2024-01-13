@@ -16,10 +16,10 @@ class CustomDataset(Dataset):
   y_scaler: BaseEstimator = None
 
   def _scale_features(self, df: pd.DataFrame):
-    if self.x_scaler == None:
-      return df
-    if self.y_scaler == None:
-      return df
+    # if self.x_scaler == None:
+    #   return df
+    # if self.y_scaler == None:
+    #   return df
     idx = df.index
     
     y_exists = False
