@@ -53,7 +53,7 @@ def tst_train(
     # EARLY STOP
     if use_early_stop and val_loss > best_loss:
       patience_check += 1
-      if patience_check >= patience_limit: 
+      if patience_check > patience_limit: 
         print(f"early stopping: epoch {i}")
         break
     else:

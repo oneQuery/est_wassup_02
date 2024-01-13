@@ -4,6 +4,7 @@
 *.pth
 *.json
 *.png
+!blobs/*
 !auto-configs-arima/.gitkepp
 !auto-configs-nn/.gitkepp
 !auto-configs-tst/.gitkepp
